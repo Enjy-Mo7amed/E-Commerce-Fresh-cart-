@@ -69,9 +69,9 @@ export default function CheckOut() {
         }
       } else {
         const response = await CheckoutSession(id, window.location.origin, values)
-        if (response.status == "success") {
-          window.location.href = response.session.url
-          router.refresh()
+        if (response.status == "success"&& response.session?.url) {
+          window.location.replace(response.session.url);
+          // router.refresh()
         }
       }
     } catch (error) {
